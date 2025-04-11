@@ -1,0 +1,95 @@
+<h2>Subject Property</h2>
+
+<label>Size (sqft): <input type="number" [(ngModel)]="subject.sizeSqft" /></label><br>
+<label>Age (year built): <input type="number" [(ngModel)]="subject.age" /></label><br>
+<label>Acreage: <input type="number" [(ngModel)]="subject.acreage" step="0.01" /></label><br>
+<label>Garage Spaces: <input type="number" [(ngModel)]="subject.garageSpaces" /></label><br>
+<label>Bedrooms: <input type="number" [(ngModel)]="subject.bedrooms" /></label><br>
+<label>Full Bathrooms: <input type="number" [(ngModel)]="subject.fullBaths" /></label><br>
+<label>Half Bathrooms: <input type="number" [(ngModel)]="subject.halfBaths" /></label><br>
+
+<label>Condition:
+  <select [(ngModel)]="subject.condition">
+    <option value="Excellent">Excellent</option>
+    <option value="Good">Good</option>
+    <option value="Average">Average</option>
+    <option value="Fair">Fair</option>
+    <option value="Poor">Poor</option>
+  </select>
+</label><br>
+
+<label>Has Basement:
+  <select [(ngModel)]="subject.hasBasement">
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+</label><br>
+
+<div *ngIf="subject.hasBasement === 'Yes'">
+  <label>Finished Basement %:
+    <select [(ngModel)]="subject.finishedBasementPercent">
+      <option [ngValue]="0">0%</option>
+      <option [ngValue]="25">25%</option>
+      <option [ngValue]="50">50%</option>
+      <option [ngValue]="75">75%</option>
+      <option [ngValue]="100">100%</option>
+    </select>
+  </label><br>
+</div>
+
+<hr>
+
+<h2>Comparable Properties</h2>
+<div *ngFor="let comp of comps; let i = index">
+  <h4>Comp {{ i + 1 }}</h4>
+
+  <label>Price (SP or LP): <input type="number" [(ngModel)]="comp.price" /></label><br>
+
+  <label>Is Sold:
+    <select [(ngModel)]="comp.isSold">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </label><br>
+
+  <label>Size (sqft): <input type="number" [(ngModel)]="comp.sizeSqft" /></label><br>
+  <label>Age (year built): <input type="number" [(ngModel)]="comp.age" /></label><br>
+  <label>Acreage: <input type="number" [(ngModel)]="comp.acreage" step="0.01" /></label><br>
+  <label>Garage Spaces: <input type="number" [(ngModel)]="comp.garageSpaces" /></label><br>
+  <label>Bedrooms: <input type="number" [(ngModel)]="comp.bedrooms" /></label><br>
+  <label>Full Bathrooms: <input type="number" [(ngModel)]="comp.fullBaths" /></label><br>
+  <label>Half Bathrooms: <input type="number" [(ngModel)]="comp.halfBaths" /></label><br>
+
+  <label>Condition:
+    <select [(ngModel)]="comp.condition">
+      <option value="Excellent">Excellent</option>
+      <option value="Good">Good</option>
+      <option value="Average">Average</option>
+      <option value="Fair">Fair</option>
+      <option value="Poor">Poor</option>
+    </select>
+  </label><br>
+
+  <label>Has Basement:
+    <select [(ngModel)]="comp.hasBasement">
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </label><br>
+
+  <div *ngIf="comp.hasBasement === 'Yes'">
+    <label>Finished Basement %:
+      <select [(ngModel)]="comp.finishedBasementPercent">
+        <option [ngValue]="0">0%</option>
+        <option [ngValue]="25">25%</option>
+        <option [ngValue]="50">50%</option>
+        <option [ngValue]="75">75%</option>
+        <option [ngValue]="100">100%</option>
+      </select>
+    </label><br>
+  </div>
+
+  <hr>
+</div>
+
+<button (click)="submit()">Calculate Adjustments</button>

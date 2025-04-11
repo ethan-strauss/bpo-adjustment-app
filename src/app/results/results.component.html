@@ -1,0 +1,26 @@
+<h2>Adjustments Summary</h2>
+<p><strong>Average PPSF from sold comps:</strong> ${{ ppsf.toFixed(2) }}</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Comp #</th>
+      <th>Adjustment Details</th>
+      <th>Total Adjustment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let adj of adjustments">
+      <td>{{ adj.compIndex }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let key of getAdjustmentKeys(adj.adjustments)">
+            {{ key }}: ${{ adj.adjustments[key] }}
+          </li>
+        </ul>
+        <p><strong>{{ adj.summary }}</strong></p>
+      </td>
+      <td><strong>${{ adj.totalAdjustment.toLocaleString() }}</strong></td>
+    </tr>
+  </tbody>
+</table>
