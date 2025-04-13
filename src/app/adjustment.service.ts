@@ -40,7 +40,9 @@ export class AdjustmentService {
   }
 
   private calculateAdjustments() {
-    const soldComps = this.comps.filter(comp => comp.isSold);
+    const soldComps = this.comps.filter(comp =>
+      comp.isSold && comp.sizeSqft && comp.sizeSqft > 0
+    );
     this.averagePPSF = soldComps.length
       ? soldComps.reduce((sum, comp) => sum + (comp.price / comp.sizeSqft), 0) / soldComps.length
       : 0;
