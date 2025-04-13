@@ -55,10 +55,13 @@ export class AdjustmentService {
       // Square footage
       if (adjustmentRate && comp.sizeSqft !== this.subject.sizeSqft) {
         const diff = this.subject.sizeSqft - comp.sizeSqft;
+
+        if(Math.abs(diff) > 100){
         const adj = diff * adjustmentRate;
         adjustments.size = adj;
         total += adj;
         summary.push(`$${Math.abs(adj)} for ${adj > 0 ? 'smaller' : 'larger'} size`);
+        }
       }
 
       // Age
