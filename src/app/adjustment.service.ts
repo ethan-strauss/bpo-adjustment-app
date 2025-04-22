@@ -94,12 +94,14 @@ export class AdjustmentService {
       }
 
       //Bedrooms
-      const bedDiff = this.subject.bedrooms - comp.bedrooms;
-      if (bedDiff !== 0) {
-  const adj = bedDiff * 3000;
-  adjustments.bedrooms = adj;
-  total += adj;
-  summary.push(`$${Math.abs(adj)} for ${adj > 0 ? 'fewer' : 'extra'} bedroom(s)`);
+      if (typeof this.subject.bedrooms === 'number' && typeof comp.bedrooms === 'number') {
+        const bedDiff = this.subject.bedrooms - comp.bedrooms;
+        if (bedDiff !== 0) {
+          const adj = bedDiff * 3000;
+          adjustments.bedrooms = adj;
+          total += adj;
+          summary.push(`$${Math.abs(adj)} for ${adj > 0 ? 'fewer' : 'extra'} bedroom(s)`);
+        }
       }
 
       // Bathrooms
