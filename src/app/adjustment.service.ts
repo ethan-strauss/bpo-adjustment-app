@@ -93,6 +93,15 @@ export class AdjustmentService {
         summary.push(`$${Math.abs(adj)} for ${adj > 0 ? 'fewer' : 'extra'} garage space(s)`);
       }
 
+      //Bedrooms
+      const bedDiff = this.subject.bedrooms - comp.bedrooms;
+      if (bedDiff !== 0) {
+  const adj = bedDiff * 3000;
+  adjustments.bedrooms = adj;
+  total += adj;
+  summary.push(`$${Math.abs(adj)} for ${adj > 0 ? 'fewer' : 'extra'} bedroom(s)`);
+      }
+
       // Bathrooms
       const fullBathDiff = this.subject.fullBaths - comp.fullBaths;
       const halfBathDiff = this.subject.halfBaths - comp.halfBaths;
