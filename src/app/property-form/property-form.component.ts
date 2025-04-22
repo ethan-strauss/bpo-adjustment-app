@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AdjustmentService } from '../adjustment.service';
 
 @Component({
   selector: 'app-property-form',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './property-form.component.html',
   styleUrls: ['./property-form.component.css']
 })
